@@ -32,5 +32,6 @@ Thumbs.db
 desktop.ini
 *.swp
 
-# Local Claude Code settings (keep machine-specific config & secrets out of Git)
-.claude/settings.local.json
+# Claude Code & agent tooling (local-only; auto-generated skill mirrors, settings, secrets)
+.claude/
+.agents/

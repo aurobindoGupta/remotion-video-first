@@ -1,7 +1,36 @@
+# Dependencies
 node_modules
-dist
-.DS_Store
-.env
 
-# Ignore the output video from Git but not videos you import into src/.
+# Build output
+dist
+build
+
+# Rendered video output — large files, regenerate with `npx remotion render`.
+# Ignored from Git, but not videos you import into src/.
 out
+
+# Remotion cache / temp
+.remotion
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Scratch / diagnostics (still frames, temp renders)
+.diag
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# Local Claude Code settings (keep machine-specific config & secrets out of Git)
+.claude/settings.local.json

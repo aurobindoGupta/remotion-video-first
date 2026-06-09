@@ -401,9 +401,19 @@ export const MyComposition: React.FC = () => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
+  // staticFile() returns a root-relative path ("/music.mp3"). The Remotion
+  // Studio's audio-waveform worker calls `new URL(src)` with no base, which
+  // throws "Invalid URL" in a Web Worker and crashes the preview. Resolving to
+  // an absolute URL against the current origin fixes the Studio without
+  // affecting the actual render (both run in a browser with window.location).
+  const musicSrc =
+    typeof window !== "undefined"
+      ? new URL(staticFile("music.mp3"), window.location.origin).href
+      : staticFile("music.mp3");
+
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.bgTop, fontFamily: FONT }}>
-      <Audio src={staticFile("music.mp3")} volume={musicVol} loop />
+      <Audio src={musicSrc} volume={musicVol} loop />
 
       <AbsoluteFill style={{ transform: `scale(${camera})`, transformOrigin: "center" }}>
         <Background />

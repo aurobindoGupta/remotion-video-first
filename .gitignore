@@ -26,6 +26,10 @@ yarn-error.log*
 # Scratch / diagnostics (still frames, temp renders)
 .diag
 
+# Local working notes (per-repo, not for publishing)
+/SESSION_HANDOVER.md
+/tasks/
+
 # OS / editor junk
 .DS_Store
 Thumbs.db
